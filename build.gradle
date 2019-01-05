@@ -1,0 +1,67 @@
+group 'com.zjc.shardingjdbc'
+version '1.0.0'
+
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.19.BUILD-SNAPSHOT'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.zjc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+	//redis
+	compile('org.springframework.boot:spring-boot-starter-data-redis:1.4.0.RELEASE')
+	//mybatis
+	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1')
+	//mysql驱动
+	compile('mysql:mysql-connector-java')
+	//restful
+	compile('io.springfox:springfox-swagger2:2.6.1')
+	compile('io.springfox:springfox-swagger-ui:2.6.1')
+	//sharding-jdbc
+	compile group: 'io.shardingsphere', name: 'sharding-jdbc-core', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-transaction-2pc', version: '3.1.0.M1', ext: 'pom'
+//	compile group: 'io.shardingsphere', name: 'sharding-transaction-2pc-xa', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-jdbc-orchestration-spring-boot-starter', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-jdbc-spring-namespace', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-transaction', version: '3.1.0.M1', ext: 'pom'
+//	compile group: 'io.shardingsphere', name: 'sharding-proxy', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-spring', version: '3.1.0.M1', ext: 'pom'
+	compile group: 'io.shardingsphere', name: 'sharding-jdbc-spring-boot-starter', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-sphere', version: '3.1.0.M1', ext: 'pom'
+//	compile group: 'io.shardingsphere', name: 'sharding-jdbc-spring', version: '3.1.0.M1', ext: 'pom'
+//	compile group: 'io.shardingsphere', name: 'sharding-jdbc-orchestration-spring-namespace', version: '3.1.0.M1'
+//	compile group: 'io.shardingsphere', name: 'sharding-orchestration', version: '3.1.0.M1', ext: 'pom'
+//	compile group: 'io.shardingsphere', name: 'sharding-transaction-core', version: '3.1.0.M1'
+	//set get
+	compile('org.projectlombok:lombok')
+	//启动
+	implementation('org.springframework.boot:spring-boot-starter')
+	//单元测试
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.18.RELEASE'
+	//连接池
+	compile group: 'com.alibaba', name: 'druid', version: '1.1.12'
+}

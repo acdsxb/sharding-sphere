@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjc.shardingjdbc.repository.UserRepository">
+
+    <resultMap id="user" type="com.zjc.shardingjdbc.model.User">
+        <id property="id" column="id"/>
+        <id property="createTime" column="create_time"/>
+        <id property="updateTIme" column="update_time"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="user">
+        SELECT * FROM lsj_zjc_user WHERE id = #{id}
+    </select>
+</mapper>
